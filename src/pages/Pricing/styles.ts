@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components';
+import { motion } from 'framer-motion';
 
 interface PriceProps {
   spotlight?: boolean;
 }
 
-export const Container = styled.div`
+export const Container = styled(motion.div)`
   height: 100%;
 
   display: flex;
@@ -12,27 +13,37 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  header {
-    margin-bottom: 40px;
+  overflow: hidden;
+`;
 
-    h1 {
-      font-size: 24px;
-      color: #1a1c20;
-    }
+export const Header = styled(motion.header).attrs({
+  initial: { scale: 0.1, opacity: 0 },
+  animate: { scale: 1, opacity: 1 },
+  transition: { duration: 0.5 },
+})`
+  margin-bottom: 40px;
+
+  h1 {
+    font-size: 24px;
+    color: #1a1c20;
+  }
+
+  > div {
+    margin-top: 48px;
+    display: flex;
+    align-items: center;
 
     > div {
-      margin-top: 64px;
-      display: flex;
-      align-items: center;
-
-      > div {
-        margin: 0 16px;
-      }
+      margin: 0 16px;
     }
   }
 `;
 
-export const ContainerCards = styled.div`
+export const ContainerCards = styled(motion.div).attrs({
+  initial: { y: '100%', opacity: 0 },
+  animate: { y: 0, opacity: 1 },
+  transition: { duration: 0.5 },
+})`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,7 +53,7 @@ export const ContainerCards = styled.div`
   }
 `;
 
-export const Card = styled.div`
+export const Card = styled(motion.div)`
   width: 230px;
   height: 330px;
   background: #fff;
@@ -106,7 +117,7 @@ export const Card = styled.div`
   }
 `;
 
-export const SpotLight = styled.div`
+export const SpotLight = styled(motion.div)`
   width: 320px;
   height: 400px;
 
@@ -173,7 +184,7 @@ export const SpotLight = styled.div`
   }
 `;
 
-export const Price = styled.div<PriceProps>`
+export const Price = styled(motion.div)<PriceProps>`
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -209,7 +220,7 @@ export const Price = styled.div<PriceProps>`
     `}
 `;
 
-export const Separator = styled.div`
+export const Separator = styled(motion.div)`
   width: 100%;
   height: 0.5px;
 
